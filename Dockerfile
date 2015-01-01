@@ -1,7 +1,12 @@
 FROM phusion/baseimage:0.9.9
 
 ENV HOME /root
-ENV    DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND noninteractive
+ENV APACHE_SERVERADMIN admin@localhost
+ENV APACHE_SERVERNAME localhost.docker
+ENV APACHE_RUN_USER www-data
+ENV APACHE_RUN_GROUP www-data
+ENV APACHE_LOG_DIR /var/log/apache2
 
 RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
 
