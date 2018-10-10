@@ -76,6 +76,21 @@ class TemplateX {
 		$this->vars = $vars;
 	}
 
+	public function section( $filename ) {
+		$output = '';
+		$template = $this->locateTemplate( $filename );
+
+		if ( $template ) {
+			$vars = array_merge( $this->vars, array( 'x' => $this ) );
+			extract( $vars, EXTR_SKIP );
+			ob_start();
+			include $template;
+			$output = ob_get_clean();
+		}
+
+		return $output;
+	}
+
 	/**
 	 * Checks if a variable exists.
 	 *
@@ -276,7 +291,7 @@ class TemplateX {
 	public function render() {
 
 		$output = '';
-		$template = $this->locateTemplate();
+		$template = $this->locateTemplate($this->template);
 
 		if ( $template ) {
 			$vars = array_merge( $this->vars, array( 'x' => $this ) );
@@ -294,10 +309,10 @@ class TemplateX {
 	 *
 	 * @return string The full path to the template or an empty string if not found.
 	 */
-	protected function locateTemplate() {
+	protected function locateTemplate( $template_file ) {
 		$template = '';
 		foreach ( $this->templatePaths as $path ) {
-			$file = rtrim( $path, '/' ) . '/' . $this->template;
+			$file = rtrim( $path, '/' ) . '/' . $template_file;
 			if ( file_exists( $file ) ) {
 				$template = $file;
 				break;
