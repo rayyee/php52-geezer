@@ -1,12 +1,19 @@
-docker-php52
+<center>👴 php52-geezer </center>
 ============
+
+> ⬜️ a minimalist and nostalgic web framework based on apache and php5.2, run in docker.
+
+### Feature
+...
+
+### Docker
 
 apache and php5.2
 
-build it
+###### # build it
 
-docker build -t php52 .
+    docker build -t=php52 .
 
-run it
+###### # run it
 
-docker run -d --name php52 -v /var/www:/home/mssagar:rw -p 81:80 --link mysql:db php52 /sbin/my_init --enable-insecure-key
+    docker run -d --name php52 -v /path/to:/var/www:rw -p 81:80 --link mysql:db php52 /sbin/my_init --enable-insecure-key
