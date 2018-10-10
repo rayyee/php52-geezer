@@ -1,5 +1,6 @@
-<p align="center">👴 php52-geezer</p>
-===
+**<p align="center">👴 php52-geezer</p>**
+
+---
 
 > ⬜️ a minimalist and nostalgic web framework based on apache and php5.2, run in docker.
 
